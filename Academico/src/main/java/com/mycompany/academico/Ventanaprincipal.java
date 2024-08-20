@@ -148,9 +148,9 @@ public class Ventanaprincipal extends javax.swing.JFrame {
             System.out.println("a:"+a);
             System.out.println(muestra3);
         }
-        JOptionPane.showMessageDialog(rootPane, muestra);
-        JOptionPane.showMessageDialog(rootPane, muestra2);
-        JOptionPane.showMessageDialog(rootPane, muestra3);
+        JOptionPane.showMessageDialog(rootPane, muestra+"\n"+muestra2+"\n"+muestra3);
+//        JOptionPane.showMessageDialog(rootPane, muestra2);
+//        JOptionPane.showMessageDialog(rootPane, muestra3);
     }//GEN-LAST:event_searchActionPerformed
 
     /**
