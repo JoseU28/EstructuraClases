@@ -4,7 +4,8 @@ package com.mycompany.restaurant;
 public class Plato {
     String name;
     String ingredients;
-    double price;
+    int price;
+    int cost;
 
     public String getName() {
         return name;
@@ -22,12 +23,21 @@ public class Plato {
         this.ingredients = ingredients;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+    
+    
 }

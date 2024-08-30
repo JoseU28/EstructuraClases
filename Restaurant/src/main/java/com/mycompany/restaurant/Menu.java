@@ -12,15 +12,17 @@ public class Menu {
     String semana[]=new String[]{"lunes","martes","miercoles","jueves","viernes","sábado"};
     int c=0;
     int m=1000;
+    int gan=0;
     
     public void crearMenu(int cantidad){
         platosArray = new Plato [cantidad];
         int i=0;
-        while(i<3){
+        while(i<platosArray.length){
             platosArray[i]=new Plato();
             platosArray[i].setName(JOptionPane.showInputDialog("Escriba el nombre del plato "+(i+1)));
             platosArray[i].setIngredients(JOptionPane.showInputDialog("Escriba los ingredientes del plato "+(i+1)));
-            platosArray[i].setPrice(Double.parseDouble(JOptionPane.showInputDialog("Escriba los ingredientes del plato "+(i+1))));
+            platosArray[i].setCost(Integer.parseInt(JOptionPane.showInputDialog("Escriba el costo de produccion del plato "+(i+1))));
+            platosArray[i].setPrice(Integer.parseInt(JOptionPane.showInputDialog("Escriba el precio de venta del plato "+(i+1))));
 //            platos[i]=JOptionPane.showInputDialog("Escriba el nombre del plato "+(i+1));
             i++;
         }
@@ -51,18 +53,16 @@ public class Menu {
     }
     
     public String analizarDatos(){
-        String text1 = "Esta semana se vendieron: ";
+        String text1 = "Esta semana se vendieron: " +"\n";
         for(int i=0;i<platosArray.length;i++){
             for(int a=0;a<datos.length;a++){
                 c+=datos[a][i];
             }
-            if((i+1)==platosArray.length){
-                text1 += c +" "+ platosArray[i].getName()+ ".";
-            }else{
-                text1 += c +" "+ platosArray[i].getName()+ ", ";
-            }
+            text1 += c +" "+ platosArray[i].getName()+ "."+"\n"+"Dando una ganancia de: "+((c*platosArray[i].getPrice())-(c*platosArray[i].getCost()))+"\n";
+            gan+=(c*platosArray[i].getPrice())-(c*platosArray[i].getCost());
             c=0;
         }
+        text1+="\n"+"Las ganancias totales fueron de: "+gan;
         String text2="Los días que más se vendieron fueron: ";
         String text3="Los días que menos se vendieron fueron: ";
         for(int i=0;i<platosArray.length;i++){
@@ -107,7 +107,9 @@ public class Menu {
         text4+="El día que más se vendió fue el "+semana[ma]+" y el día que menos se vendió fue el "+semana[me];
         c=0;
         m=1000;
+        
         String text= text1+"\n"+"\n"+text2+"\n"+text3+"\n"+"\n"+text4;
+        
 
         return text;
     }
