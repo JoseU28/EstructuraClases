@@ -145,7 +145,6 @@ public class Ventanaprincipal extends javax.swing.JFrame {
             }
             search.setEnabled(true);
     }//GEN-LAST:event_createActionPerformed
-    //ToDo hacer 3 arreglos de 5 slots y que el programa finalice cuando ya estén llenos y en consultar mostrar todo en orden
     
     private void createMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseClicked
         
