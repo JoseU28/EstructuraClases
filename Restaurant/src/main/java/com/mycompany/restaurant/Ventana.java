@@ -128,8 +128,7 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
-        JOptionPane.showConfirmDialog(rootPane, "Escriba los nombres, ingredientes y precio de los 3 platos de esta semana");
-        objmenu.crearMenu();
+        objmenu.crearMenu(Integer.parseInt(JOptionPane.showInputDialog("Escriba la cantidad de platos del menú")));
         search.setEnabled(true);
         data.setEnabled(true);
     }//GEN-LAST:event_createActionPerformed

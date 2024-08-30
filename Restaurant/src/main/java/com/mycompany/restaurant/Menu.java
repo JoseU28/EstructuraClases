@@ -7,16 +7,17 @@ public class Menu {
     Plato plato2 = new Plato();
     Plato plato3 = new Plato();
     
-    Plato platosArray []={plato1,plato2,plato3};
-    String platos [];
+    Plato platosArray [];
     int datos[][];
     String semana[]=new String[]{"lunes","martes","miercoles","jueves","viernes","sábado"};
     int c=0;
     int m=1000;
     
-    public void crearMenu(){
+    public void crearMenu(int cantidad){
+        platosArray = new Plato [cantidad];
         int i=0;
         while(i<3){
+            platosArray[i]=new Plato();
             platosArray[i].setName(JOptionPane.showInputDialog("Escriba el nombre del plato "+(i+1)));
             platosArray[i].setIngredients(JOptionPane.showInputDialog("Escriba los ingredientes del plato "+(i+1)));
             platosArray[i].setPrice(Double.parseDouble(JOptionPane.showInputDialog("Escriba los ingredientes del plato "+(i+1))));
