@@ -83,7 +83,6 @@ public class ListaSimple {
                         b++;
                     }
                     if(a==1){
-                        Nodo temporal2;
                         if(temporal!=null){
                             inicio=nuevo;
                             inicio.setEnlace(temporal);
@@ -107,13 +106,11 @@ public class ListaSimple {
                 if(word!=null){
                     temporal = inicio;
                     while(b<=(c)){
-                        System.out.println("Entra al while");
                         if(b==1){
                             if(temporal.getName().toUpperCase().equals(word.toUpperCase())){
                                 a=b;
                                 b=c+2;
                                 e=false;
-                                System.out.println("entra al if 1");
                             }
                         }else{
                             temporal=temporal.getEnlace();
@@ -121,7 +118,6 @@ public class ListaSimple {
                                 a=b;
                                 b=c+2;
                                 e=false;
-                                System.out.println("entra al if 2");
                             }
                         }
                         b++;
