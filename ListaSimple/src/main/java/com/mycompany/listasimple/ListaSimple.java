@@ -57,6 +57,9 @@ public class ListaSimple {
         int a=1;
         int b=1;
         int c=1;
+        int d=0;
+        boolean e=true;
+        String word="";
         if(inicio==null){
             inicio=nuevo; 
             if(nuevo.getName()==null){
@@ -68,25 +71,96 @@ public class ListaSimple {
                 temporal=temporal.getEnlace();
                 c++;
             }
-            a = Integer.parseInt(JOptionPane.showInputDialog("¿En qué posición quiere colocarlo? Hay "+c+" posiciones"));
-            if(a>c || a<1){
-                JOptionPane.showMessageDialog(null, "Esa no es una posición valida");
-            }else{
-                temporal = inicio;
-                while(b<(a-1)){
-                    temporal=temporal.getEnlace();
-                    b++;
-                }
-                Nodo temporal2;
-                if(temporal.getEnlace()!=null){
-                    temporal2=temporal.getEnlace();
-                    temporal.setEnlace(nuevo);
-                    temporal=temporal.getEnlace();
-                    temporal.setEnlace(temporal2);
+            d = Integer.parseInt(JOptionPane.showInputDialog("1. Agregar por nombre"+"\n"+"2. Agregar por posición"));
+            if(d==2){
+                a = Integer.parseInt(JOptionPane.showInputDialog("¿En qué posición quiere colocarlo? Hay "+c+" posiciones"));
+                if(a>c || a<1){
+                    JOptionPane.showMessageDialog(null, "Esa no es una posición valida");
                 }else{
-                    temporal.setEnlace(nuevo);
+                    temporal = inicio;
+                    while(b<(a-1)){
+                        temporal=temporal.getEnlace();
+                        b++;
+                    }
+                    if(a==1){
+                        Nodo temporal2;
+                        if(temporal!=null){
+                            inicio=nuevo;
+                            inicio.setEnlace(temporal);
+                        }else{
+                            inicio=nuevo;
+                        } 
+                    }else{
+                        Nodo temporal2;
+                        if(temporal.getEnlace()!=null){
+                            temporal2=temporal.getEnlace();
+                            temporal.setEnlace(nuevo);
+                            temporal=temporal.getEnlace();
+                            temporal.setEnlace(temporal2);
+                        }else{
+                            temporal.setEnlace(nuevo);
+                        }
+                    }
                 }
+            }else if(d==1){
+                word=JOptionPane.showInputDialog("Escriba el nombre delante del cuál colocará el registro");
+                if(word!=null){
+                    temporal = inicio;
+                    while(b<=(c)){
+                        System.out.println("Entra al while");
+                        if(b==1){
+                            if(temporal.getName().equals(word)){
+                                a=b;
+                                b=c+2;
+                                e=false;
+                                System.out.println("entra al if 1");
+                            }
+                        }else{
+                            temporal=temporal.getEnlace();
+                            if(temporal.getName().equals(word)){
+                                a=b;
+                                b=c+2;
+                                e=false;
+                                System.out.println("entra al if 2");
+                            }
+                        }
+                        b++;
+                    }
+                    if(e){
+                        JOptionPane.showMessageDialog(null, "Ese nombre no está registrado");
+                    }else{
+                        b=1;
+                        temporal = inicio;
+                        while(b<(a-1)){
+                            temporal=temporal.getEnlace();
+                            b++;
+                        }
+                        if(a==1){
+                            if(temporal!=null){
+                                inicio=nuevo;
+                                inicio.setEnlace(temporal);
+                            }else{
+                                inicio=nuevo;
+                            } 
+                        }else{
+                            Nodo temporal2;
+                            if(temporal.getEnlace()!=null){
+                                temporal2=temporal.getEnlace();
+                                temporal.setEnlace(nuevo);
+                                temporal=temporal.getEnlace();
+                                temporal.setEnlace(temporal2);
+                            }else{
+                                temporal.setEnlace(nuevo);
+                            }
+                        }
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Esa no es una posición valida");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Esa no es una posición valida");
             }
+            
         }
     }
     
