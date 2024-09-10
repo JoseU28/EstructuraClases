@@ -48,6 +48,42 @@ public class ListaSimple {
             temporal.setEnlace(nuevo);
         }
     }
+    
+    public void eliminarPosicion(){
+        int a=1;
+        int b=1;
+        int c=1;
+        Nodo temporal = inicio;
+        while(temporal.getEnlace()!=null){
+            temporal=temporal.getEnlace();
+            c++;
+        }
+        a = Integer.parseInt(JOptionPane.showInputDialog("¿Qué posición quiere eliminar? Hay "+c+" posiciones"));
+        if(a>c || a<1){
+            JOptionPane.showMessageDialog(null, "Esa no es una posición valida");
+        }else{
+            temporal = inicio;
+            while(b<(a-1)){
+                temporal=temporal.getEnlace();
+                b++;
+            }
+            if(a==1){
+                if(temporal!=null){
+                    if(inicio.getEnlace()!=null){
+                        inicio=inicio.getEnlace();
+                    }else{
+                        inicio=null;
+                        JOptionPane.showMessageDialog(null, "Ha borrado todos los registros");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "No hay nada para borrar");
+                }
+            }else{
+                temporal.setEnlace(temporal.getEnlace().getEnlace());
+            }
+        }
+    }
+    
     public void insertarAzar(String name, int age, float average){
         Nodo nuevo = new Nodo();
         nuevo.setName(name);
@@ -162,6 +198,7 @@ public class ListaSimple {
     
     public void consultar(){
         Nodo temporal=inicio;
+        int c=1;
         if(inicio==null){
             JOptionPane.showConfirmDialog(null, "La lista está vacía");
         }else{
@@ -169,8 +206,9 @@ public class ListaSimple {
                 JOptionPane.showMessageDialog(null,
                         "Nombre: "+temporal.getName()+"\n"+
                         "Edad: "+temporal.getAge()+"\n"+
-                        "Promedio: "+temporal.getAverage());
-                
+                        "Promedio: "+temporal.getAverage()+"\n"+
+                        "Posición: "+c);
+                c++;
                 temporal=temporal.getEnlace();
             }while(temporal!=null);
         }
