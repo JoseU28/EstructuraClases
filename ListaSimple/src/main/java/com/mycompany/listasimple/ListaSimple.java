@@ -109,7 +109,7 @@ public class ListaSimple {
                     while(b<=(c)){
                         System.out.println("Entra al while");
                         if(b==1){
-                            if(temporal.getName().equals(word)){
+                            if(temporal.getName().toUpperCase().equals(word.toUpperCase())){
                                 a=b;
                                 b=c+2;
                                 e=false;
@@ -117,7 +117,7 @@ public class ListaSimple {
                             }
                         }else{
                             temporal=temporal.getEnlace();
-                            if(temporal.getName().equals(word)){
+                            if(temporal.getName().toUpperCase().equals(word.toUpperCase())){
                                 a=b;
                                 b=c+2;
                                 e=false;
