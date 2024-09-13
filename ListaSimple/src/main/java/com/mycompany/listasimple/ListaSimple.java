@@ -1,13 +1,17 @@
 
 package com.mycompany.listasimple;
 
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 public class ListaSimple {
     
     Nodo inicio;
+    Nodo ordenar;
+    
     ListaSimple(){
         inicio=null;
+        ordenar=null;
     }
     
     public void insertarInicio(String name, int age, float average){
@@ -82,6 +86,46 @@ public class ListaSimple {
                 temporal.setEnlace(temporal.getEnlace().getEnlace());
             }
         }
+    }
+    
+    public void ordenar(){
+         if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "No hay registros para ordenar");
+            return;
+        }
+
+        // Paso 1: Contar los nodos
+        int c = 0;
+        Nodo temporal = inicio;
+        while (temporal != null) {
+            c++;
+            temporal = temporal.getEnlace();
+        }
+
+        // Paso 2: Crear un arreglo para los nodos
+        Nodo[] nodos = new Nodo[c];
+        temporal = inicio;
+
+        // Paso 3: Rellenar el arreglo con los nodos completos
+        for (int i = 0; i < c; i++) {
+            nodos[i] = temporal;  // Guardar el nodo completo
+            temporal = temporal.getEnlace();
+        }
+
+        // Paso 4: Ordenar el arreglo de nodos por el nombre alfabéticamente
+        Arrays.sort(nodos, (n1, n2) -> n1.getName().compareTo(n2.getName()));
+
+        // Paso 5: Reconstruir la lista enlazada con los nodos ordenados
+        inicio = nodos[0];  // El primer nodo del array será el nuevo inicio
+        temporal = inicio;  // Reiniciamos temporal para reconstruir la lista
+
+        for (int i = 1; i < c; i++) {
+            temporal.setEnlace(nodos[i]);  // Establecer el enlace al siguiente nodo
+            temporal = temporal.getEnlace();  // Avanzar al siguiente nodo
+        }
+        temporal.setEnlace(null);  // El último nodo debe apuntar a null
+
+        JOptionPane.showMessageDialog(null, "Lista ordenada correctamente");
     }
     
     public void insertarAzar(String name, int age, float average){
@@ -195,6 +239,8 @@ public class ListaSimple {
             
         }
     }
+    
+    
     
     public void consultar(){
         Nodo temporal=inicio;
