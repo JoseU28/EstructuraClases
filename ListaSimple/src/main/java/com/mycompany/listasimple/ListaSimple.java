@@ -32,6 +32,24 @@ public class ListaSimple {
         }
     }
     
+    public void create(){
+        String[] abecedario={"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","u","v","w","x","y","z"};
+        int nods = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de estudiantes "));
+        String name = "";
+        float prom = 0;
+        for(int i = 0; i<nods; i++){
+            int rango = (int) (3+ (Math.random()*7));
+            for(int j = 0; j<rango; j++){
+                int numero = (int) (Math.random() * abecedario.length);
+                name += abecedario[numero];
+                prom  = (float) Math.random() * 5 + 1;
+            }
+            int edad = (int) (Math.random() * 50)+1;
+            insertarFinal(name, edad, prom);
+            name = "";
+        }
+    }
+    
     public void insertarFinal(String name, int age, float average){
         Nodo nuevo = new Nodo();
         nuevo.setName(name);
