@@ -41,8 +41,12 @@ public class ListaSimple {
             int rango = (int) (3+ (Math.random()*7));
             for(int j = 0; j<rango; j++){
                 int numero = (int) (Math.random() * abecedario.length);
+                if(j==0){
+                    name+= abecedario[numero].toUpperCase();
+                }else{
                 name += abecedario[numero];
-                prom  = (float) Math.random() * 5 + 1;
+                prom  = (float) Math.random() * 5 ;
+                }
             }
             int edad = (int) (Math.random() * 50)+1;
             insertarFinal(name, edad, prom);
