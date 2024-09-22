@@ -35,19 +35,36 @@ public class ListaSimple {
     public void create(){
         String[] abecedario={"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","u","v","w","x","y","z"};
         int nods = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de estudiantes "));
+        long tiempoInicio = System.currentTimeMillis();
+
         String name = "";
         float prom = 0;
         for(int i = 0; i<nods; i++){
             int rango = (int) (3+ (Math.random()*7));
             for(int j = 0; j<rango; j++){
                 int numero = (int) (Math.random() * abecedario.length);
+                if(j==0){
+                    name+= abecedario[numero].toUpperCase();
+                }else{
                 name += abecedario[numero];
-                prom  = (float) Math.random() * 5 + 1;
+                prom  = (float) Math.random() * 5 ;
+                }
             }
             int edad = (int) (Math.random() * 50)+1;
             insertarFinal(name, edad, prom);
             name = "";
         }
+        // Registrar el tiempo de inicio
+        
+        // Registrar el tiempo de fin
+        long tiempoFin = System.currentTimeMillis();
+        
+        // Calcular el tiempo de ejecución
+        long tiempoEjecucion = tiempoFin - tiempoInicio;
+        
+        // Mostrar el tiempo de ejecución en un JOptionPane
+        JOptionPane.showMessageDialog(null, 
+            "El método tardó " + tiempoEjecucion + " milisegundos en ejecutarse.");
     }
     
     public void insertarFinal(String name, int age, float average){
@@ -107,12 +124,12 @@ public class ListaSimple {
     }
     
     public void ordenar(){
+        long tiempoInicio = System.currentTimeMillis();
          if (inicio == null) {
             JOptionPane.showMessageDialog(null, "No hay registros para ordenar");
             return;
         }
 
-        // Paso 1: Contar los nodos
         int c = 0;
         Nodo temporal = inicio;
         while (temporal != null) {
@@ -120,29 +137,34 @@ public class ListaSimple {
             temporal = temporal.getEnlace();
         }
 
-        // Paso 2: Crear un arreglo para los nodos
         Nodo[] nodos = new Nodo[c];
         temporal = inicio;
 
-        // Paso 3: Rellenar el arreglo con los nodos completos
         for (int i = 0; i < c; i++) {
-            nodos[i] = temporal;  // Guardar el nodo completo
+            nodos[i] = temporal;  
             temporal = temporal.getEnlace();
         }
 
-        // Paso 4: Ordenar el arreglo de nodos por el nombre alfabéticamente
         Arrays.sort(nodos, (n1, n2) -> n1.getName().compareTo(n2.getName()));
 
-        // Paso 5: Reconstruir la lista enlazada con los nodos ordenados
-        inicio = nodos[0];  // El primer nodo del array será el nuevo inicio
-        temporal = inicio;  // Reiniciamos temporal para reconstruir la lista
+        inicio = nodos[0]; 
+        temporal = inicio; 
 
         for (int i = 1; i < c; i++) {
-            temporal.setEnlace(nodos[i]);  // Establecer el enlace al siguiente nodo
-            temporal = temporal.getEnlace();  // Avanzar al siguiente nodo
+            temporal.setEnlace(nodos[i]);  
+            temporal = temporal.getEnlace();  
         }
-        temporal.setEnlace(null);  // El último nodo debe apuntar a null
-
+        temporal.setEnlace(null); 
+        // Registrar el tiempo de fin
+        long tiempoFin = System.currentTimeMillis();
+        
+        // Calcular el tiempo de ejecución
+        long tiempoEjecucion = tiempoFin - tiempoInicio;
+        
+        // Mostrar el tiempo de ejecución en un JOptionPane
+        JOptionPane.showMessageDialog(null, 
+            "El método tardó " + tiempoEjecucion + " milisegundos en ejecutarse.");
+        
         JOptionPane.showMessageDialog(null, "Lista ordenada correctamente");
     }
     
