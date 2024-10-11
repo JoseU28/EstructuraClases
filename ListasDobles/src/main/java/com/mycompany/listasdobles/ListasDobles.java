@@ -26,14 +26,21 @@ public class ListasDobles {
         nuevo.setAnterior(null);
         nuevo.setSiguiente(null);
         
+        nuevo.setAnterior(inicio.getAnterior());
+        nuevo.setSiguiente(inicio);
+        inicio.setAnterior(nuevo);
+//        inicio.setSiguiente();  ARREGLAR :)
         if(inicio!=null){
-           while(temporal.getSiguiente()!=null){
-               temporal=temporal.getSiguiente();
-            }
-           temporal.setSiguiente(nuevo);
-           nuevo.setAnterior(temporal);
+//           while(temporal.getSiguiente()!=null){
+//               temporal=temporal.getSiguiente();
+//            }
+//           temporal.setSiguiente(nuevo);
+//           nuevo.setAnterior(temporal);
+           
         }else{
             inicio=nuevo;
+            inicio.setAnterior(inicio);
+            inicio.setSiguiente(inicio);
         }
     }
     
@@ -52,7 +59,7 @@ public class ListasDobles {
     public void borrarMenores(){
         Person temporal=inicio;
         while(temporal!=null){
-            if(temporal.getEdad()<=18){
+            if(temporal.getEdad()<18){
                 if(temporal.getAnterior()!=null){
                     temporal.getAnterior().setSiguiente(temporal.getSiguiente());
                 }
